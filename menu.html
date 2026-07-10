@@ -91,17 +91,17 @@
             background-color: #24262b;
         }
 
-        /* 💡 讓「伺服器」頁籤在 menu.html 中呈現高亮墨綠狀態 */
+        /* 讓「伺服器」頁籤高亮 */
         nav a.active {
             background-color: #1b3524; 
             color: var(--brand-green);
             font-weight: 600;
         }
 
-        /* 🌄 伺服器頂部大型遊戲封面橫幅 */
+        /* 🌄 伺服器頂部大型封面橫幅 */
         .banner {
             position: relative;
-            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(17, 18, 22, 1)), url('https://images.unsplash.com/photo-1627856013091-fed6e4e30025?q=80&w=1200'); /* 預設精美麥塊風暗色背景，你可替換為自己的遊戲截圖 */
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(17, 18, 22, 1)), url('https://images.unsplash.com/photo-1627856013091-fed6e4e30025?q=80&w=1200');
             background-size: cover;
             background-position: center;
             height: 200px;
@@ -136,7 +136,7 @@
             background-color: var(--bg-card);
             border: 1px solid var(--border-color);
             padding: 14px 24px;
-            border-radius: 30px; /* 膠囊化頂欄 */
+            border-radius: 30px;
             margin-bottom: 24px;
             flex-wrap: wrap;
             gap: 12px;
@@ -194,7 +194,7 @@
             border-radius: 14px;
             padding: 20px 28px;
             display: grid;
-            grid-template-columns: 200px 150px 1fr auto;
+            grid-template-columns: 240px 150px 1fr auto;
             align-items: center;
             gap: 20px;
             transition: transform 0.2s ease, border-color 0.2s ease;
@@ -203,6 +203,14 @@
         .server-row:hover {
             border-color: #41444b;
             transform: translateY(-2px);
+        }
+
+        /* 針對資料尚未填寫的空白 IP 樣式優化 */
+        .ip-empty {
+            color: var(--color-muted) !important;
+            font-style: italic;
+            background-color: transparent !important;
+            border: 1px dashed var(--border-color) !important;
         }
 
         /* 手機板響應式斷點 */
@@ -253,7 +261,7 @@
             display: inline-block;
         }
 
-        /* ⬜ 完美復刻 Modrinth 藥丸型詳細資料按鈕 */
+        /* ⬜ Modrinth 藥丸型詳細資料按鈕 */
         .btn-detail {
             display: inline-flex;
             align-items: center;
@@ -262,7 +270,7 @@
             color: #111216;
             padding: 8px 24px;
             text-decoration: none;
-            border-radius: 30px; /* 極致圓滑藥丸 */
+            border-radius: 30px;
             font-size: 0.95rem;
             font-weight: bold;
             transition: background 0.2s ease, transform 0.1s ease;
@@ -371,6 +379,54 @@
                 </div>
                 <div>
                     <span class="server-ip-block">SKY1gx4P.aternos.me:24369</span>
+                </div>
+                <div class="server-actions">
+                    <a href="#" class="btn-detail">詳細資料</a>
+                </div>
+            </div>
+
+            <div class="server-row">
+                <div class="server-name-block">
+                    <span class="dot dot-blue" style="margin-right: 12px;"></span>
+                    天堂 Ⅱ (模組)
+                </div>
+                <div class="server-version-block">
+                    版本：<span style="color: var(--color-muted); font-style: italic;">未填</span>
+                </div>
+                <div>
+                    <span class="server-ip-block ip-empty">未提供 IP 位置</span>
+                </div>
+                <div class="server-actions">
+                    <a href="#" class="btn-detail">詳細資料</a>
+                </div>
+            </div>
+
+            <div class="server-row">
+                <div class="server-name-block">
+                    <span class="dot dot-red" style="margin-right: 12px;"></span>
+                    槍械伺服器 (模組)
+                </div>
+                <div class="server-version-block">
+                    版本：<span style="color: var(--color-muted); font-style: italic;">未填</span>
+                </div>
+                <div>
+                    <span class="server-ip-block ip-empty">未提供 IP 位置</span>
+                </div>
+                <div class="server-actions">
+                    <a href="#" class="btn-detail">詳細資料</a>
+                </div>
+            </div>
+
+            <div class="server-row">
+                <div class="server-name-block">
+                    <span class="dot dot-red" style="margin-right: 12px;"></span>
+                    數據包生存
+                </div>
+                <div class="server-version-block">
+                    版本：<span style="color: var(--color-muted); font-style: italic;">未填</span>
+                </div>
+                <div>
+                    <span class="server-ip-block ip-empty">未提供 IP 位置</span>
                 </div>
                 <div class="server-actions">
                     <a href="#" class="btn-detail">詳細資料</a>
