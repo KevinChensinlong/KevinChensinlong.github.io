@@ -273,7 +273,7 @@
             object-fit: cover;
             display: block;
             background-color: #111216;
-            cursor: zoom-in; /* 提示玩家圖片可以放大 */
+            cursor: zoom-in; 
         }
 
         .gallery-meta {
@@ -418,47 +418,56 @@
             margin: 8px 0;
         }
 
-        /* ==================== 【全新引進】圖片放大燈箱效果 ==================== */
+        /* ==================== 【完美置中優化】圖片放大燈箱 ==================== */
         .lightbox {
-            display: none;             /* 預設隱藏 */
-            position: fixed;           /* 鎖定在螢幕最外層 */
-            z-index: 2000;             /* 層級必須高於所有物件 */
-            padding-top: 60px;
+            display: none;             
+            position: fixed;           
+            z-index: 2000;             
             left: 0;
             top: 0;
             width: 100%;
             height: 100%;
-            overflow: auto;
-            background-color: rgba(11, 12, 14, 0.9); /* Modrinth 風格深色半透明遮罩 */
-            backdrop-filter: blur(4px); /* 背景微弱模糊，質感大幅升級 */
-            cursor: zoom-out;          /* 點擊放大圖外面可以縮小 */
+            background-color: rgba(11, 12, 14, 0.9); 
+            backdrop-filter: blur(4px); 
+            cursor: zoom-out;          
+            
+            /* 使用 Flexbox 確保內部圖片無論大小，均能完美垂直、水平置中 */
+            display: none; /* 透過 JS 控制改為 flex */
+            justify-content: center;
+            align-items: center;
+            box-sizing: border-box;
+            padding: 20px;
         }
 
         .lightbox-content {
-            margin: auto;
             display: block;
-            max-width: 85%;            
-            max-height: 80vh;          
+            max-width: 90%;            /* 略微放大最大寬度限制 */
+            max-height: 85vh;          /* 略微放大最大高度限制，完美利用螢幕空間 */
+            width: auto;
+            height: auto;
+            object-fit: contain;       /* 確保圖片等比例縮放不變形 */
             border-radius: 12px;       
             border: 1px solid var(--border-color);
-            box-shadow: 0 12px 36px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.6);
             
             /* 流暢的彈出放大動畫 */
             animation-name: zoomIn;
-            animation-duration: 0.25s;
-            transition: transform 0.2s ease;
+            animation-duration: 0.22s;
+            animation-timing-function: cubic-bezier(0.1, 0.8, 0.25, 1); /* 更流暢的精神質感 */
         }
 
+        /* 右上角關閉按鈕 */
         .lightbox-close {
             position: absolute;
-            top: 20px;
-            right: 35px;
+            top: 24px;
+            right: 32px;
             color: var(--color-muted);
-            font-size: 40px;
+            font-size: 38px;
             font-weight: bold;
-            transition: 0.2s;
+            transition: color 0.2s ease;
             cursor: pointer;
             line-height: 1;
+            z-index: 2100;
         }
 
         .lightbox-close:hover {
@@ -466,13 +475,14 @@
         }
 
         @keyframes zoomIn {
-            from { transform: scale(0.95); opacity: 0; }
+            from { transform: scale(0.94); opacity: 0; }
             to { transform: scale(1); opacity: 1; }
         }
     </style>
 </head>
 <body>
 
+    <!-- 頂部導覽列 -->
     <header>
         <div class="header-container">
             <h1><a href="index.html" style="color: inherit; text-decoration: none; font-weight:700;">伺服器公告</a></h1>
@@ -484,6 +494,7 @@
         </div>
     </header>
 
+    <!-- ==================== 1. 頂部固定橫幅專案資訊 ==================== -->
     <div class="project-header">
         <div class="project-header-container">
             <div class="project-meta-left">
@@ -500,6 +511,7 @@
             </div>
         </div>
 
+        <!-- ==================== 2. Modrinth 頁籤導覽列 ==================== -->
         <div class="project-tabs-nav">
             <button class="tab-btn active" onclick="switchTab('description')">描述</button>
             <button class="tab-btn" onclick="switchTab('gallery')">圖庫</button>
@@ -507,10 +519,13 @@
         </div>
     </div>
 
+    <!-- ==================== 3. 雙欄佈局主要核心 ==================== -->
     <div class="main-layout">
         
+        <!-- 左欄：動態主內容 -->
         <div class="tab-content-panel">
             
+            <!-- 分頁一：描述 -->
             <div id="tab-description" class="page-section active">
                 <div class="video-wrapper">
                     <iframe src="https://www.youtube.com/embed/ZiaSg6XpD3M" title="Minecraft Cinematic Video" allowfullscreen></iframe>
@@ -522,6 +537,7 @@
                 </div>
             </div>
 
+            <!-- 分頁二：圖庫 -->
             <div id="tab-gallery" class="page-section">
                 <div class="gallery-grid">
                     <div class="gallery-card">
@@ -551,9 +567,11 @@
                 </div>
             </div>
 
+            <!-- 分頁三：更新日誌 -->
             <div id="tab-changelog" class="page-section">
                 <div class="changelog-timeline">
                     
+                    <!-- 節點一 -->
                     <div class="log-node">
                         <div class="log-header">
                             <h4 class="log-title">主伺服器更新：版本 26.1</h4>
@@ -568,6 +586,7 @@
                         </div>
                     </div>
 
+                    <!-- 節點二 -->
                     <div class="log-node">
                         <div class="log-header">
                             <h4 class="log-title">伺服器效能與交通優化</h4>
@@ -587,8 +606,10 @@
 
         </div>
 
+        <!-- 右欄：固定邊欄 (Sidebar) -->
         <div class="sidebar-panel">
             
+            <!-- 卡片一：相容性資訊 -->
             <div class="sidebar-card">
                 <h3>相容性</h3>
                 <p style="margin: 0 0 10px 0; font-size: 0.95rem; font-weight:600;">Minecraft Java 版</p>
@@ -597,6 +618,7 @@
                 </div>
             </div>
 
+            <!-- 卡片二：重要注意事項 -->
             <div class="sidebar-card">
                 <h3>注意事項</h3>
                 <div class="notice-box">
@@ -605,6 +627,7 @@
                 </div>
             </div>
 
+            <!-- 卡片三：專案資訊細節 -->
             <div class="sidebar-card" style="font-size: 0.95rem; color: var(--color-muted);">
                 <h3>詳細資訊</h3>
                 <div class="info-list">
@@ -620,11 +643,13 @@
 
     </div>
 
+    <!-- 圖片放大燈箱 HTML 結構 -->
     <div id="image-lightbox" class="lightbox" onclick="closeLightbox()">
         <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
         <img class="lightbox-content" id="lightbox-img" alt="放大圖片">
     </div>
 
+    <!-- 控制指令腳本 -->
     <script>
         // 頁籤無縫切換機制
         function switchTab(tabId) {
@@ -635,7 +660,11 @@
             buttons.forEach(btn => btn.classList.remove('active'));
 
             document.getElementById('tab-' + tabId).classList.add('active');
-            event.currentTarget.classList.add('active');
+            
+            // 修正部分瀏覽器找不到 currentTarget 的問題
+            if (event && event.currentTarget) {
+                event.currentTarget.classList.add('active');
+            }
         }
 
         // 流暢複製 IP
@@ -652,12 +681,12 @@
             }, 1500);
         }
 
-        // 開啟燈箱放大圖片
+        // 開啟燈箱放大圖片 (改為 Flex 彈出，完美置中)
         function openLightbox(imgElement) {
             const lightbox = document.getElementById('image-lightbox');
             const lightboxImg = document.getElementById('lightbox-img');
             
-            lightbox.style.display = "block";
+            lightbox.style.display = "flex"; /* 啟用 Flex 佈局 */
             lightboxImg.src = imgElement.src; 
             
             // 鎖定背景滾動
