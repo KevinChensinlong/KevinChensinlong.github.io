@@ -142,15 +142,17 @@
             text-decoration: none;
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             font-size: 1.05rem;
-            transition: all 0.2s ease;
-            border: none;
+            transition: background-color 0.2s ease, border-color 0.2s ease;
+            border: 1px solid transparent;
             cursor: pointer;
+            min-width: 160px; /* 固定最小寬度，防止文字改變時長度縮小縮排 */
+            box-sizing: border-box;
         }
 
         .btn-download:hover {
             background-color: var(--brand-green-hover);
-            transform: translateY(-1px);
         }
         
         /* 點擊後文字改變的提示狀態樣式 */
@@ -286,10 +288,10 @@
             gap: 6px;
         }
 
-        /* 📜 更新日誌頁籤樣式 (修正圓圈歪斜問題) */
+        /* 更新日誌頁籤樣式 (完美解決圓圈與線條對齊問題) */
         .changelog-timeline {
             position: relative;
-            padding-left: 24px;
+            padding-left: 30px;
             margin-left: 10px;
             border-left: 3px solid var(--brand-orange); 
         }
@@ -299,12 +301,13 @@
             margin-bottom: 40px;
         }
 
-        /* 精準修正時間軸圓圈對齊，不再依賴文字行高 */
+        /* 將圓圈精準壓在左側邊框線中央，並透過百分比垂直置中於第一行標題 */
         .log-node::before {
             content: '';
             position: absolute;
-            left: -31px;
-            top: 10px; /* 完美垂直居中對齊標題首行 */
+            left: -37px; /* 精準對齊 3px 寬度的垂直橘線正中心 */
+            top: 13px;   /* 完美對齊主標題的第一行字體中心 */
+            transform: translateY(-50%);
             width: 11px;
             height: 11px;
             background-color: var(--brand-orange);
@@ -402,6 +405,10 @@
             color: #ffb4b4;
             font-size: 0.95rem;
             line-height: 1.5;
+        }
+        
+        .info-list p {
+            margin: 8px 0;
         }
     </style>
 </head>
@@ -541,9 +548,13 @@
 
             <div class="sidebar-card" style="font-size: 0.95rem; color: var(--color-muted);">
                 <h3>詳細資訊</h3>
-                <p>📂 類型：Minecraft 伺服器</p>
-                <p>⚙️ 平台：Fabric 優化架構</p>
-                <p>📅 建立時間：2024 年 6 月</p>
+                <div class="info-list">
+                    <p>用戶端：Fabric 優化架構</p>
+                    <p>客戶端：原版</p>
+                    <p>託管機構：Aternos</p>
+                    <p>建立者：鄭世岡</p>
+                    <p>建立時間：2024 年 6 月</p>
+                </div>
             </div>
 
         </div>
@@ -563,7 +574,7 @@
             event.currentTarget.classList.add('active');
         }
 
-        // 流暢複製 IP 且不跳彈出視窗
+        // 流暢複製 IP 且按鈕不縮小、不跳彈出視窗
         function copyServerIP() {
             navigator.clipboard.writeText('solomon10129MCJ.aternos.me:16226');
             
@@ -571,7 +582,7 @@
             ipBtn.innerText = '已複製 IP！';
             ipBtn.classList.add('copied');
 
-            // 1.5 秒後按鈕自動回復原狀，使用者體驗極佳
+            // 1.5 秒後按鈕自動回復原狀
             setTimeout(() => {
                 ipBtn.innerText = '複製伺服器 IP';
                 ipBtn.classList.remove('copied');
