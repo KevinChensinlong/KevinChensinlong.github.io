@@ -146,7 +146,7 @@
             transition: background-color 0.2s ease, border-color 0.2s ease;
             border: 1px solid transparent;
             cursor: pointer;
-            min-width: 160px; /* 固定最小寬度，防止複製時寬度發生抖動或縮小 */
+            min-width: 160px;
             box-sizing: border-box;
         }
 
@@ -284,13 +284,23 @@
             gap: 6px;
         }
 
-        /* ==================== 更新日誌穩定版綠色時間軸 (精準對齊機制) ==================== */
+        /* ==================== 【全新重構】幾何精準對齊時間軸 ==================== */
         .changelog-timeline {
             position: relative;
-            padding-left: 24px;
+            padding-left: 32px;  /* 為左側留出完美的呼吸空間 */
             margin-left: 8px;
-            /* 穩定版本全面改為亮綠色垂直實線 */
-            border-left: 3px solid var(--brand-green); 
+        }
+
+        /* 獨立的垂直綠線：固定 3px 寬，不依賴外框邊界，確保絕對筆直 */
+        .changelog-timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 6px;
+            bottom: 6px;
+            width: 3px;
+            background-color: var(--brand-green);
+            border-radius: 2px;
         }
 
         .log-node {
@@ -298,19 +308,18 @@
             margin-bottom: 40px;
         }
 
-        /* 使用與邊框絕對切齊的中心位移，達到不論字體多大皆完美重合的效果 */
+        /* 幾何對齊核心：left 直接瞄準綠線中心（1.5px），搭配 translate(-50%, -50%) 達成完美鎖死 */
         .log-node::before {
             content: '';
             position: absolute;
-            /* 計算公式：-(外距 + 線寬/2 + 圓心半徑) 達到與左邊綠線完美同心 */
-            left: -31px; 
-            top: 13px;   
-            transform: translateY(-50%);
+            left: 1.5px;                 /* 完美對準 3px 綠線的中央物理軸心 */
+            top: 13px;                  /* 對齊標題文字的垂直中心線 */
+            transform: translate(-50%, -50%); /* 強制圓心與定位點百分之百重合，絕不偏移 */
             width: 11px;
             height: 11px;
-            background-color: var(--brand-green); /* 圓圈同步改為穩定版綠色 */
+            background-color: var(--brand-green);
             border-radius: 50%;
-            border: 3px solid var(--bg-main);
+            border: 3px solid var(--bg-main); /* 經典深色空隙圈 */
             z-index: 2;
         }
 
@@ -572,7 +581,7 @@
             event.currentTarget.classList.add('active');
         }
 
-        // 流暢複製 IP 且按鈕不縮小
+        // 流暢複製 IP
         function copyServerIP() {
             navigator.clipboard.writeText('solomon10129MCJ.aternos.me:16226');
             
@@ -580,7 +589,6 @@
             ipBtn.innerText = '已複製 IP！';
             ipBtn.classList.add('copied');
 
-            // 1.5 秒後按鈕自動回復原狀
             setTimeout(() => {
                 ipBtn.innerText = '複製伺服器 IP';
                 ipBtn.classList.remove('copied');
