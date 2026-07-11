@@ -214,9 +214,9 @@
             justify-content: center;
             background-color: var(--brand-green);
             color: #000;
-            padding: 12px 24px;
+            padding: 6px 24px;
             text-decoration: none;
-            border-radius: 30px;
+            border-radius: 10px;
             /* 💡 更改為極致圓滑的藥丸型圓角 */
             font-size: 1rem;
             font-weight: bold;
@@ -337,7 +337,7 @@
 
     <header>
         <div class="header-container">
-            <h1><a href="#main-server">伺服器公告</a></h1>
+            <h1><a href="/">伺服器公告</a></h1>
             <nav>
                 <a href="index.html" class="active">首頁</a>
                 <a href="menu.html">伺服器</a>
@@ -369,6 +369,7 @@
                     <li><a href="#mod-server">▪ 模組伺服器動態</a></li>
                     <li><a href="#server-optimization">▪ 主伺服器內部優化</a></li>
                     <li><a href="#future-plans">▪ 未來開發計畫</a></li>
+                    <li><a href="#website_alert">▪ 其他公告</a></li>
                     <li><a href="#policy-alert">▪ 重要政策公告</a></li>
                     <li><a href="#self-host">▪ 伺服器自主開啟指引</a></li>
                 </ul>
@@ -394,7 +395,8 @@
                     <div style="margin-top: 15px; padding: 0 5px;">
                         <img src="images/update-26.2.png" alt="26.2 更新預覽"
                             style="width: 100%; max-width: 500px; height: auto; border-radius: 8px; border: 1px solid #2c2e33; box-shadow: 0 4px 12px rgba(0,0,0,0.3); display: block;">
-                        <p style="margin: 6px 0 0 0; font-size: 0.85rem; color: #a3a7af; padding-left: 10px;">▲ 26.2 版本主視覺圖</p>
+                        <p style="margin: 6px 0 0 0; font-size: 0.85rem; color: #a3a7af; padding-left: 10px;">▲ 26.2
+                            版本主視覺圖</p>
                     </div>
                 </details>
 
@@ -420,9 +422,13 @@
 
             <div class="card" id="future-plans">
                 <h2>未來開發計畫</h2>
-                <p><strong>寒假重新運作：</strong> 伺服器將在寒假期間恢復全面運作，屆時官方網站也會進行大改版，並正式預計加入<strong>「即時通訊系統」</strong>。</p>
-                <p><strong>伺服器重建專案：</strong> 預計推出「一格空島」、「墜落世界」、「主題式槍械」以及「天堂Ⅱ」等多款特色玩法。</p>
-                <p style="margin-bottom: 0;"><strong>即時留言系統：</strong> 我們正在測試留言板功能，使用者可捲動至頁面最下方搶先試用（測試中）。</p>
+                <p><strong>寒假重新運作：</strong> 伺服器將在暑假期間恢復全面運作，屆時官方網站也會進行大改版</p>
+                <p><strong>伺服器重建專案：</strong> 預計重新推出「主題式槍械」以及「天堂Ⅱ」等多款特色玩法。</p>
+            </div>
+
+            <div class="card" id="website_alert">
+                <h2>其他公告</h2>
+                <p><strong>及時留言系統：</strong> 本系統已確認暫時移除。</p>
             </div>
 
             <div class="card policy-card" id="policy-alert">
@@ -437,7 +443,9 @@
                 <p>當伺服器處於關閉狀態時，玩家可以依照以下步驟自行啟動：</p>
                 <ol>
                     <li>前往 <a href="https://aternos.org/" target="_blank"
-                            style="color: var(--guide-yellow); font-weight: bold; text-decoration: none;">Aternos
+                            style="color: var(--guide-yellow); font-weight: bold; text-decoration: none; transition: color 0.2s ease, text-decoration 0.2s ease;"
+                            onmouseover="this.style.textDecoration='underline'; this.style.color='#ffd15c';"
+                            onmouseout="this.style.textDecoration='none'; this.style.color='var(--guide-yellow)';">Aternos
                             官方網站</a>。</li>
                     <li>輸入帳號：<span class="code-block">Start_Monitor</span></li>
                     <li>輸入密碼：<span class="code-block" id="server-pwd">ATW6235</span>
