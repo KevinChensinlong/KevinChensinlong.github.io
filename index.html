@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,16 +8,26 @@
     <style>
         /* 完美復刻 Modrinth 配色與全域樣式 */
         :root {
-            --bg-main: #111216;       /* 最底層超暗背景 */
-            --bg-card: #1c1e22;       /* 卡片與區塊背景 */
-            --bg-nav: #16171a;        /* 導覽列背景 */
-            --color-text: #eaebee;    /* 主文字顏色 */
-            --color-muted: #a3a7af;   /* 說明小字顏色 */
-            --brand-green: #1bd96a;   /* 正常狀態背景色 */
-            --brand-green-hover: #22ff85; /* 滑鼠移上去時背景色漸變 */
-            --border-color: #2c2e33;  /* 邊框線條顏色 */
-            --alert-red: #ff4a4a;     /* 政策警示紅 */
-            --guide-yellow: #f1b019;  /* 技術指引黃 */
+            --bg-main: #111216;
+            /* 最底層超暗背景 */
+            --bg-card: #1c1e22;
+            /* 卡片與區塊背景 */
+            --bg-nav: #16171a;
+            /* 導覽列背景 */
+            --color-text: #eaebee;
+            /* 主文字顏色 */
+            --color-muted: #a3a7af;
+            /* 說明小字顏色 */
+            --brand-green: #1bd96a;
+            /* 正常狀態背景色 */
+            --brand-green-hover: #22ff85;
+            /* 滑鼠移上去時背景色漸變 */
+            --border-color: #2c2e33;
+            /* 邊框線條顏色 */
+            --alert-red: #ff4a4a;
+            /* 政策警示紅 */
+            --guide-yellow: #f1b019;
+            /* 技術指引黃 */
         }
 
         body {
@@ -46,7 +57,7 @@
             align-items: center;
             padding: 14px 20px;
         }
-        
+
         header h1 {
             margin: 0;
             font-size: 1.5rem;
@@ -69,7 +80,8 @@
             gap: 4px;
             background-color: #111216;
             padding: 4px;
-            border-radius: 30px; /* 藥丸外框圓角 */
+            border-radius: 30px;
+            /* 藥丸外框圓角 */
             border: 1px solid var(--border-color);
         }
 
@@ -78,7 +90,8 @@
             color: var(--color-muted);
             text-decoration: none;
             padding: 6px 18px;
-            border-radius: 20px; /* 內層選項高圓角 */
+            border-radius: 20px;
+            /* 內層選項高圓角 */
             transition: all 0.2s ease;
             font-size: 1.05rem;
             font-weight: 500;
@@ -91,7 +104,7 @@
 
         /* 💡 復刻截圖中「模組」標籤的墨綠色底、亮綠字效果 */
         nav a.active {
-            background-color: #1b3524; 
+            background-color: #1b3524;
             color: var(--brand-green);
             font-weight: 600;
         }
@@ -139,9 +152,10 @@
         .card {
             background-color: var(--bg-card);
             border: 1px solid var(--border-color);
-            border-radius: 14px; /* 稍微提升整體卡片大圓角 */
+            border-radius: 14px;
+            /* 稍微提升整體卡片大圓角 */
             padding: 28px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
             scroll-margin-top: 80px;
         }
 
@@ -202,7 +216,8 @@
             color: #000;
             padding: 12px 24px;
             text-decoration: none;
-            border-radius: 30px; /* 💡 更改為極致圓滑的藥丸型圓角 */
+            border-radius: 30px;
+            /* 💡 更改為極致圓滑的藥丸型圓角 */
             font-size: 1rem;
             font-weight: bold;
             transition: background 0.3s ease, transform 0.2s ease, color 0.3s ease;
@@ -227,7 +242,8 @@
             padding: 6px 16px;
             font-size: 0.85rem;
             margin-left: 8px;
-            border-radius: 20px; /* 💡 更改為極致圓滑的藥丸型圓角 */
+            border-radius: 20px;
+            /* 💡 更改為極致圓滑的藥丸型圓角 */
             font-weight: bold;
             transition: background 0.3s ease, transform 0.2s ease, color 0.3s ease;
             border: none;
@@ -250,7 +266,8 @@
             background-color: #24262b;
             color: var(--color-muted);
             padding: 4px 12px;
-            border-radius: 20px; /* 💡 高圓角 */
+            border-radius: 20px;
+            /* 💡 高圓角 */
             font-size: 0.85rem;
             margin-right: 8px;
             border: 1px solid var(--border-color);
@@ -260,7 +277,8 @@
         details {
             background-color: #16171a;
             padding: 14px 18px;
-            border-radius: 10px; /* 摺疊選單微調圓潤 */
+            border-radius: 10px;
+            /* 摺疊選單微調圓潤 */
             border: 1px solid var(--border-color);
             margin-top: 14px;
         }
@@ -272,7 +290,8 @@
             font-size: 1.05rem;
         }
 
-        ul, ol {
+        ul,
+        ol {
             padding-left: 22px;
             margin: 12px 0 0 0;
             color: var(--color-muted);
@@ -287,7 +306,7 @@
         .policy-card {
             border-left: 4px solid var(--alert-red);
         }
-        
+
         .tech-card {
             border-left: 4px solid var(--guide-yellow);
         }
@@ -313,6 +332,7 @@
         }
     </style>
 </head>
+
 <body>
 
     <header>
@@ -327,15 +347,16 @@
     </header>
 
     <div class="main-layout">
-        
+
         <div class="sidebar">
             <div class="card" style="padding: 18px;">
-                <h2>平台狀態</h2>
-                <p style="margin-bottom: 10px;">託管平台：<span class="tag">Aternos</span></p>
-                <p style="margin-bottom: 18px;">主版本：<span class="tag">1.21 / 26.1</span></p>
-                <a href="menu.html" class="btn" style="width: 100%; box-sizing: border-box;">瀏覽伺服器清單 ➔</a>
+                <h2>特色伺服器：主伺服器</h2>
+                <p style="margin-bottom: 10px;">類型：<span class="tag">原版</span></p>
+                <p style="margin-bottom: 18px;">版本：<span class="tag">26.2</span></p>
+                <p style="margin-bottom: 18px;">IP位置：<span class="tag">solomon10129MCj.aternos.me:16226</span></p>
+                <a href="server-main.html" class="btn" style="width: 100%; box-sizing: border-box;">查看詳細資訊 ➔</a>
             </div>
-            
+
             <div class="card" style="padding: 18px;">
                 <h2>溫馨提示</h2>
                 <p style="margin: 0;">自架伺服器效能有限，旨在同樂。若連線較慢請多包涵！</p>
@@ -355,21 +376,28 @@
         </div>
 
         <div class="content-area">
-
             <h2 class="page-main-title">最新公告</h2>
 
             <div class="card" id="main-server">
-                <h3>主伺服器更新：版本已升級至 26.1</h3>
+                <h2 style="margin-top: 0; color: #1bd96a; font-size: 1.5rem; font-weight: bold;">主伺服器更新：版本已升級至 26.2</h2>
                 <p>目前主伺服器已完成升級，請玩家更新客戶端後登入遊玩。</p>
-                
+
                 <details>
-                    <summary>點擊展開 26.1 更新重點細節</summary>
+                    <summary>點擊展開 26.2 更新重點細節</summary>
                     <ul>
-                        <li><strong>全新生物外觀：</strong> 新增兔子與多種幼年生物的全新視覺外觀。</li>
-                        <li><strong>全新道具與配方：</strong> 引入「金蒲公英」，並正式新增「命名牌」的合成配方。</li>
-                        <li><strong>音效升級：</strong> 音階盒新增「小號」音色，並全面更新了貓、豬、牛、雞等動物的新音效。</li>
+                        <li><strong>全新方塊：</strong> 新增硫磺與硃砂系列方塊。</li>
+                        <li><strong>全新生態域：</strong> 新增硫磺洞窟、硫磺噴泉等。</li>
+                        <li><strong>全新生物：</strong> 硫磺立方怪，外型類似史萊姆，有小型與中型，可餵食史萊姆球加速成長。</li>
                     </ul>
+
+                    <!-- ==================== 更新預覽圖片區塊 ==================== -->
+                    <div style="margin-top: 15px; padding: 0 5px;">
+                        <img src="images/update-26.2.png" alt="26.2 更新預覽"
+                            style="width: 100%; max-width: 500px; height: auto; border-radius: 8px; border: 1px solid #2c2e33; box-shadow: 0 4px 12px rgba(0,0,0,0.3); display: block;">
+                        <p style="margin: 6px 0 0 0; font-size: 0.85rem; color: #a3a7af; padding-left: 10px;">▲ 26.2 版本主視覺圖</p>
+                    </div>
                 </details>
+
                 <div style="margin-top: 15px;">
                     <span class="tag">重要更新</span><span class="tag">主伺服器</span>
                 </div>
@@ -400,16 +428,19 @@
             <div class="card policy-card" id="policy-alert">
                 <h2>重要政策公告</h2>
                 <p>配合教育局相關政策與規範，現行的遊戲相關群組將於近日進行刪除。</p>
-                <p><strong>注意：</strong> 且由於本網站建立，舊網站將不再更新。之後所有伺服器的動態、IP、更新資訊只會在此官方網站發布，不再透過群組與舊網站另行通知，請玩家務必將本網站加入瀏覽器我的最愛。</p>
+                <p><strong>注意：</strong>
+                    且由於本網站建立，舊網站將不再更新。之後所有伺服器的動態、IP、更新資訊只會在此官方網站發布，不再透過群組與舊網站另行通知，請玩家務必將本網站加入瀏覽器我的最愛。</p>
             </div>
 
             <div class="card tech-card" id="self-host">
                 <h2>伺服器自主開啟操作指引</h2>
                 <p>當伺服器處於關閉狀態時，玩家可以依照以下步驟自行啟動：</p>
                 <ol>
-                    <li>前往 <a href="https://aternos.org/" target="_blank" style="color: var(--guide-yellow); font-weight: bold; text-decoration: none;">Aternos 官方網站</a>。</li>
+                    <li>前往 <a href="https://aternos.org/" target="_blank"
+                            style="color: var(--guide-yellow); font-weight: bold; text-decoration: none;">Aternos
+                            官方網站</a>。</li>
                     <li>輸入帳號：<span class="code-block">Start_Monitor</span></li>
-                    <li>輸入密碼：<span class="code-block" id="server-pwd">ATW6235</span> 
+                    <li>輸入密碼：<span class="code-block" id="server-pwd">ATW6235</span>
                         <button class="btn-gray" id="copyBtn">複製密碼</button>
                         <div id="status"></div>
                     </li>
@@ -421,7 +452,7 @@
     </div>
 
     <script>
-        document.getElementById("copyBtn").addEventListener("click", function() {
+        document.getElementById("copyBtn").addEventListener("click", function () {
             var pwdText = document.getElementById("server-pwd").innerText;
 
             const textarea = document.createElement("textarea");
@@ -450,36 +481,38 @@
 
 
 
-    <footer style="background-color: #16171a; border-top: 1px solid #2c2e33; padding: 40px 20px; color: #a3a7af; margin-top: 50px;">
-        <div style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
-        
+    <footer
+        style="background-color: #16171a; border-top: 1px solid #2c2e33; padding: 40px 20px; color: #a3a7af; margin-top: 50px;">
+        <div
+            style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
+
             <div>
                 <div style="font-size: 1.2rem; font-weight: bold; color: #fff; margin-bottom: 6px;">伺服器公告專案</div>
                 <p style="margin: 0; font-size: 0.95rem;">本站為開源專案，歡迎至 GitHub 參與貢獻。</p>
             </div>
 
             <div style="display: flex; gap: 20px;">
-                <a href="https://github.com/KevinChensinlong/KevinChensinlong.github.io" target="_blank" 
-                   style="color: #a3a7af; text-decoration: none; transition: 0.2s;"
-                   onmouseover="this.style.textDecoration='underline'; this.style.color='#fff';" 
-                   onmouseout="this.style.textDecoration='none'; this.style.color='#a3a7af';">
-                   GitHub 原始碼
+                <a href="https://github.com/KevinChensinlong/KevinChensinlong.github.io" target="_blank"
+                    style="color: #a3a7af; text-decoration: none; transition: 0.2s;"
+                    onmouseover="this.style.textDecoration='underline'; this.style.color='#fff';"
+                    onmouseout="this.style.textDecoration='none'; this.style.color='#a3a7af';">
+                    GitHub 原始碼
                 </a>
-                <a href="#" 
-                   style="color: #a3a7af; text-decoration: none; transition: 0.2s;"
-                   onmouseover="this.style.textDecoration='underline'; this.style.color='#fff';" 
-                   onmouseout="this.style.textDecoration='none'; this.style.color='#a3a7af';">服務條款</a>
-                <a href="#" 
-                   style="color: #a3a7af; text-decoration: none; transition: 0.2s;"
-                   onmouseover="this.style.textDecoration='underline'; this.style.color='#fff';" 
-                   onmouseout="this.style.textDecoration='none'; this.style.color='#a3a7af';">隱私政策</a>
+                <a href="#" style="color: #a3a7af; text-decoration: none; transition: 0.2s;"
+                    onmouseover="this.style.textDecoration='underline'; this.style.color='#fff';"
+                    onmouseout="this.style.textDecoration='none'; this.style.color='#a3a7af';">服務條款</a>
+                <a href="#" style="color: #a3a7af; text-decoration: none; transition: 0.2s;"
+                    onmouseover="this.style.textDecoration='underline'; this.style.color='#fff';"
+                    onmouseout="this.style.textDecoration='none'; this.style.color='#a3a7af';">隱私政策</a>
             </div>
         </div>
-    
-        <div style="max-width: 1200px; margin: 20px auto 0 auto; padding-top: 20px; border-top: 1px solid #2c2e33; text-align: center; font-size: 0.85rem;">
+
+        <div
+            style="max-width: 1200px; margin: 20px auto 0 auto; padding-top: 20px; border-top: 1px solid #2c2e33; text-align: center; font-size: 0.85rem;">
             &copy; 2026 鄭世岡 ｜ 託管於 GitHub Pages ｜ Minecraft 為 Mojang AB 之商標
         </div>
     </footer>
 
 </body>
+
 </html>
