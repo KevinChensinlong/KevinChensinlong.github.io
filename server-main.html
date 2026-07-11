@@ -436,13 +436,13 @@
             justify-content: center;
             align-items: center;
             box-sizing: border-box;
-            padding: 20px;
+            padding: 10px; /* 【優化】縮小外圍留白（原20px），釋放更多空間給圖片 */
         }
 
         .lightbox-content {
             display: block;
-            max-width: 90%;            /* 略微放大最大寬度限制 */
-            max-height: 85vh;          /* 略微放大最大高度限制，完美利用螢幕空間 */
+            max-width: 96%;            /* 【放大】從 90% 提升至 96%，讓橫幅圖片能撐得更滿 */
+            max-height: 94vh;          /* 【放大】從 85vh 提升至 94vh，極大化直幅圖片的垂直空間 */
             width: auto;
             height: auto;
             object-fit: contain;       /* 確保圖片等比例縮放不變形 */
@@ -472,6 +472,7 @@
 
         .lightbox-close:hover {
             color: #fff;
+        }
         }
 
         @keyframes zoomIn {
