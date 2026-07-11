@@ -1,20 +1,23 @@
-/* 完美復刻 Modrinth 核心配色 */
+/* ==========================================================================
+   完美復刻 Modrinth 核心配色
+   ========================================================================== */
 :root {
-    --bg-main: #111216;
-    /* 全域最暗背景 */
-    --bg-card: #1c1e22;
-    /* 右側邊欄與分頁卡片背景 */
-    --bg-nav: #16171a;
-    /* 頂部導覽列背景 */
-    --color-text: #eaebee;
-    /* 主字體顏色 */
-    --color-muted: #a3a7af;
-    /* 說明小字與未選中字體顏色 */
-    --brand-green: #1bd96a;
-    /* 亮綠色大按鈕與選中字體 */
+    --bg-main: #111216;             /* 全域最暗背景 */
+    --bg-card: #1c1e22;             /* 右側邊欄與分頁卡片背景 */
+    --bg-nav: #16171a;              /* 頂部導覽列背景 */
+    --color-text: #eaebee;          /* 主字體顏色 */
+    --color-muted: #a3a7af;         /* 說明小字與未選中字體顏色 */
+    --brand-green: #1bd96a;         /* 亮綠色大按鈕與選中字體 */
     --brand-green-hover: #22ff85;
-    --border-color: #2c2e33;
-    /* 精緻網格線條顏色 */
+    --border-color: #2c2e33;        /* 精緻網格線條顏色 */
+    
+    /* 追加：側邊欄多色模組化標籤配色 */
+    --tag-stable-bg: #1b3524;
+    --tag-stable-color: #1bd96a;
+    --tag-beta-bg: #223547;
+    --tag-beta-color: #4ca2ff;
+    --tag-warn-bg: #3c241c;
+    --tag-warn-color: #ff784c;
 }
 
 body {
@@ -27,7 +30,9 @@ body {
     font-size: 1.1rem;
 }
 
-/* 頂部導覽列 */
+/* ==========================================================================
+   頂部導覽列與膠囊導覽
+   ========================================================================== */
 header {
     background-color: var(--bg-nav);
     border-bottom: 1px solid var(--border-color);
@@ -53,9 +58,13 @@ header h1 {
 header h1 a {
     color: var(--color-text);
     text-decoration: none;
+    transition: color 0.2s;
 }
 
-/* Modrinth 膠囊型分組導覽外框 */
+header h1 a:hover {
+    color: var(--brand-green);
+}
+
 nav {
     display: flex;
     gap: 4px;
@@ -79,7 +88,9 @@ nav a:hover {
     background-color: #24262b;
 }
 
-/* ==================== 1. 頂部專案橫幅區域 ==================== */
+/* ==========================================================================
+   1. 頂部專案橫幅區域
+   ========================================================================== */
 .project-header {
     background-color: #16171a;
     border-bottom: 1px solid var(--border-color);
@@ -103,7 +114,6 @@ nav a:hover {
     gap: 24px;
 }
 
-/* 左上角大圖示 */
 .project-icon {
     width: 72px;
     height: 72px;
@@ -125,7 +135,6 @@ nav a:hover {
     margin: 0;
 }
 
-/* 右側複製 IP 位置按鈕 */
 .project-meta-right {
     display: flex;
     align-items: center;
@@ -160,7 +169,9 @@ nav a:hover {
     border: 1px solid var(--brand-green);
 }
 
-/* ==================== 2. Modrinth 經典分頁選單 ==================== */
+/* ==========================================================================
+   2. Modrinth 經典分頁選單
+   ========================================================================== */
 .project-tabs-nav {
     max-width: 1200px;
     margin: 24px auto 0 auto;
@@ -193,7 +204,9 @@ nav a:hover {
     color: var(--brand-green);
 }
 
-/* ==================== 3. 雙欄主要版面配置 ==================== */
+/* ==========================================================================
+   3. 雙欄主要版面配置
+   ========================================================================== */
 .main-layout {
     max-width: 1200px;
     margin: 24px auto;
@@ -222,7 +235,11 @@ nav a:hover {
     display: block;
 }
 
-/* 描述頁籤樣式 */
+/* 💡 描述頁籤：防呆彈性排版（無影片時自動維持頂部間距） */
+.tab-content-panel #tab-description {
+    padding-top: 10px;
+}
+
 .video-wrapper {
     position: relative;
     padding-bottom: 56.25%;
@@ -248,7 +265,21 @@ nav a:hover {
     line-height: 1.7;
 }
 
-/* 圖庫頁籤樣式 */
+/* 描述頁面內的 Modrinth 經典超連結風格 */
+.description-text a {
+    color: #4ca2ff !important;
+    text-decoration: none !important;
+    font-weight: 600 !important;
+    transition: all 0.2s ease-in-out !important;
+}
+
+.description-text a:hover {
+    color: #72b6ff !important;
+}
+
+/* ==========================================================================
+   圖庫基本網格（未放大前）
+   ========================================================================== */
 .gallery-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -273,7 +304,12 @@ nav a:hover {
     object-fit: cover;
     display: block;
     background-color: #111216;
-    cursor: zoom-in;
+    cursor: pointer !important;
+    transition: filter 0.25s ease;
+}
+
+.gallery-grid .gallery-img:hover {
+    filter: brightness(0.75); /* 碰觸時微弱變暗，增加點擊暗示 */
 }
 
 .gallery-meta {
@@ -285,7 +321,9 @@ nav a:hover {
     gap: 6px;
 }
 
-/* ==================== X軸絕對鎖死時間軸 ==================== */
+/* ==========================================================================
+   更新日誌時間軸區塊（X軸絕對鎖死）
+   ========================================================================== */
 .changelog-timeline {
     position: relative;
     padding-left: 40px;
@@ -349,39 +387,53 @@ nav a:hover {
 }
 
 .log-body {
-            background-color: #16171a;
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 20px 20px 10px 20px; /* 【優化】把底部內襯稍微縮小一點點（原本是四周皆20px） */
-        }
-
-        .log-body ul {
-            margin-top: 0 !important;    /* 強制清空上方外邊距 */
-            margin-bottom: 0 !important; /* 【核心修正】物理消除瀏覽器內建的下方外邊距，解決大留白問題 */
-            padding-left: 20px;
-            color: var(--color-muted);
-        }
-        
-/* 當更新日誌卡片裡面空無一物時，自動隱藏邊框與背景 */
-.log-body:empty {
-    display: none !important;
+    background-color: #16171a;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 20px 20px 10px 20px;
 }
-/* 進階黑魔法：就算裡面有換行或縮排空格，只要沒有實際內容就隱藏 */
-.log-body:not(:has(ul)):not(:has(li)):not(:has(p)) {
-    display: none !important;
+
+.log-body ul {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    padding-left: 20px;
+    color: var(--color-muted);
 }
 
 .log-body li {
     margin-bottom: 8px;
 }
 
-/* ==================== 4. 右側固定邊欄 (Sidebar) ==================== */
+/* 更新日誌內連結樣式 */
+.changelog-timeline .log-body a {
+    color: #b8b8b8 !important;
+    text-decoration: none !important;
+    font-weight: 600 !important;
+    transition: all 0.2s ease-in-out !important;
+}
+
+.changelog-timeline .log-body a:hover {
+    color: #dddddd !important;
+}
+
+/* 💡 更新日誌自動防呆空白隱藏機制 */
+.log-body:empty {
+    display: none !important;
+}
+.log-body:not(:has(ul)):not(:has(li)):not(:has(p)) {
+    display: none !important;
+}
+
+/* ==========================================================================
+   4. 右側固定邊欄 (Sidebar) 與極簡標籤（完美視覺統一版）
+   ========================================================================== */
 .sidebar-panel {
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
 
+/* 卡片本體 */
 .sidebar-card {
     background-color: var(--bg-card);
     border: 1px solid var(--border-color);
@@ -389,7 +441,9 @@ nav a:hover {
     padding: 20px;
 }
 
+/* 💡 統一卡片大標題：純白色 */
 .sidebar-card h3 {
+    color: #ffffff !important;
     margin: 0 0 14px 0;
     font-size: 1.15rem;
     font-weight: 700;
@@ -397,59 +451,75 @@ nav a:hover {
     padding-bottom: 8px;
 }
 
-/* 相容性簡潔標籤 */
+/* 💡 統一卡片普通內文、清單段落：沉穩霧灰色 */
+.sidebar-card p,
+.sidebar-card .info-list p {
+    color: var(--color-muted) !important;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 8px 0;
+}
+
+/* 完美復刻截圖：Modrinth 經典深灰色膠囊標籤 */
 .tag-pill {
     display: inline-block;
-    background-color: #2c2e33;
-    color: var(--color-muted);
+    background-color: #2c2e33; /* 核心深灰底色 */
+    color: var(--color-muted); /* 霧灰文字 */
     padding: 4px 12px;
     border-radius: 20px;
     font-size: 0.9rem;
     margin: 4px;
     font-weight: 500;
+    border: 1px solid transparent;
+    transition: background-color 0.2s ease;
 }
 
+/* 當標籤需要高亮（例如特別強調某版本）時的微調樣式 */
 .tag-pill.highlight-version {
     background-color: #24262b;
     color: #fff;
     border: 1px solid #41444b;
 }
 
+/* 💡 注意事項警告框：微調文字亮度，確保在深紅底色下依然舒適好讀 */
 .notice-box {
     background-color: #241a1a;
     border: 1px solid #522626;
     border-radius: 8px;
     padding: 12px;
-    color: #ffb4b4;
+    color: #ec9090 !important; /* 調亮內文 */
     font-size: 0.95rem;
     line-height: 1.5;
 }
 
-.info-list p {
-    margin: 8px 0;
+/* 讓警告框內部的粗體字有好看的淡紅色提醒 */
+.notice-box strong {
+    color: #df6666 !important;
 }
 
-/* ==================== 【完美置中優化】圖片放大燈箱 ==================== */
+/* ==========================================================================
+   【終極動態空氣感】圖片放大燈箱效果專區（修正版）
+   ========================================================================== */
+
+/* 燈箱本體大底背景 */
 .lightbox {
-    display: none;
-    /* 預設隱藏，由 JavaScript 控制開啟 */
+    display: none; /* 由 JS 彈性切換為 flex */
     position: fixed;
     z-index: 2000;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(11, 12, 14, 0.9);
-    backdrop-filter: blur(4px);
-    cursor: zoom-out;
+    background-color: rgba(11, 12, 14, 0.95);
+    backdrop-filter: blur(6px);
     box-sizing: border-box;
-    padding: 20px;
-
-    /* 當 JS 將此處改為 display: flex 時，以下置中屬性才會完美生效 */
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 }
 
+/* 燈箱放大主圖片 */
 .lightbox-content {
     display: block;
     width: 65%;
@@ -465,80 +535,151 @@ nav a:hover {
     border-radius: 12px;
     border: 1px solid var(--border-color);
     box-shadow: 0 16px 48px rgba(0, 0, 0, 0.6);
-
-    /* 流暢的彈出放大動畫 */
-    animation-name: zoomIn;
-    animation-duration: 0.22s;
-    animation-timing-function: cubic-bezier(0.1, 0.8, 0.25, 1);
-}
-
-/* 右上角關閉按鈕 */
-.lightbox-close {
-    position: absolute;
-    top: 24px;
-    right: 32px;
-    color: var(--color-muted);
-    font-size: 38px;
-    font-weight: bold;
-    transition: color 0.2s ease;
-    cursor: pointer;
-    line-height: 1;
-    z-index: 2100;
-}
-
-.lightbox-close:hover {
-    color: #fff;
+    
+    /* 絲滑淡入放大 */
+    animation: zoomIn 0.22s cubic-bezier(0.1, 0.8, 0.25, 1);
 }
 
 @keyframes zoomIn {
-    from {
-        transform: scale(0.94);
-        opacity: 0;
-    }
-
-    to {
-        transform: scale(1);
-        opacity: 1;
-    }
+    from { transform: scale(0.95); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
 }
 
-header h1 a {
-    color: var(--color-text);
-    text-decoration: none;
-    transition: color 0.2s;
+/* 頂部文字區塊 */
+.lightbox-meta-block {
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    transform: translate(-50%, -10px);
+    text-align: center;
+    pointer-events: none;
+    z-index: 2100;
+    width: 100%;
+    padding: 0 20px;
+    box-sizing: border-box;
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-header h1 a:hover {
-    color: var(--brand-green);
+/* 防呆機制 */
+.lightbox-meta-block.hide-meta {
+    display: none !important;
 }
 
-/* ==================== 重新製作：分頁超連結與按鈕動態 ==================== */
-
-/* 1. 更新日誌內的連結：平時霧灰，懸停霧白 */
-.changelog-timeline .log-body a {
-    color:#b8b8b8 !important;
-    text-decoration: none !important;
-    font-weight: 600 !important;
-    transition: all 0.2s ease-in-out !important;
-    /* 強制重啟全屬性絲滑漸變 */
+.lightbox-title {
+    color: #ffffff;
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin: 0 0 6px 0;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
 }
 
-.changelog-timeline .log-body a:hover {
-    color: #dddddd !important;
-    /* 懸停時變霧白色 */
+.lightbox-sub {
+    color: var(--color-muted);
+    font-size: 0.95rem;
+    margin: 0;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
 }
 
-/* 2. 描述頁面內的連結：平時 Modrinth 藍，懸停高亮藍 */
-.description-text a {
-    color: #4ca2ff !important;
-    /* 完美復刻：Modrinth 內文藍 */
-    text-decoration: none !important;
-    font-weight: 600 !important;
-    transition: all 0.2s ease-in-out !important;
-    /* 強制重啟全屬性絲滑漸變 */
+/* 底部膠囊工具列 */
+.lightbox-toolbar {
+    position: absolute;
+    bottom: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(28, 30, 34, 0.6);
+    border: 1px solid rgba(44, 46, 51, 0.4);
+    padding: 8px 16px;
+    border-radius: 40px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    z-index: 2100;
+    cursor: default;
+    opacity: 0; /* 預設完全隱藏，維持純淨感 */
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-.description-text a:hover {
-    color: #72b6ff !important;
-    /* 懸停時變高亮極光藍 */
+/* ==========================================================================
+   精準 Hover 狀態判定（沉浸式對調邏輯修正版，防翻車並釋放圖片大小限制）
+   ========================================================================== */
+
+/* 1. 游標一進到「整體燈箱範圍內」：工具列全面高亮顯現 */
+.lightbox:hover .lightbox-toolbar {
+    opacity: 1;
+    background-color: #1c1e22;
+    border-color: var(--border-color);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6);
+}
+
+/* 當整體燈箱被懸停，且滑鼠「不在圖片上」時，文字不要顯示 */
+.lightbox:hover .lightbox-meta-block {
+    opacity: 0;
+    transform: translate(-50%, -10px);
+}
+
+/* 2. 💡 當滑鼠「碰到中間的圖片本體」時：工具列退回「極淡輪廓」，文字標題則「高亮往下掉落」 */
+/* 修正點：加上了 max-width/height 的繼承保護，防止 ~ 兄弟選擇器干擾圖片尺寸控制 */
+.lightbox-content:hover {
+    max-width: 92% !important;
+    max-height: 82vh !important;
+}
+
+.lightbox-content:hover ~ .lightbox-toolbar {
+    opacity: 0.15 !important;
+    background-color: rgba(28, 30, 34, 0.6) !important;
+    border-color: rgba(44, 46, 51, 0.4) !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* 💡 只有當滑鼠「正觸碰在圖片上」時，文字才播放掉落淡入動畫 */
+.lightbox-content:hover ~ .lightbox-meta-block {
+    opacity: 1 !important;
+    transform: translate(-50%, 0) !important;
+}
+
+/* 工具列內部的圓形按鈕 */
+.toolbar-btn {
+    background: rgba(255, 255, 255, 0.03);
+    border: none;
+    color: var(--color-muted);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.toolbar-btn:hover {
+    background-color: #2c2e33;
+    color: #ffffff;
+    transform: scale(1.08);
+}
+
+/* 自訂彈出提示（Toast） */
+.lightbox-toast {
+    position: fixed;
+    top: 40px;
+    left: 50%;
+    transform: translate(-50%, -20px);
+    background-color: var(--brand-green);
+    color: #111216;
+    padding: 10px 24px;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.25s cubic-bezier(0.1, 0.8, 0.25, 1);
+    z-index: 2500;
+    box-shadow: 0 8px 24px rgba(27, 217, 106, 0.3);
+}
+
+.lightbox-toast.show {
+    opacity: 1;
+    transform: translate(-50%, 0);
 }
