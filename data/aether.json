@@ -1,0 +1,70 @@
+{
+    "_comment1": "主橫幅",
+
+    "serverName": "天堂 (模組)",
+    "subtitle": "託管於 Aternos 平台的第一個官方模組伺服器，旨在同樂。",
+    "ipAddress": "SKY1gx4P.aternos.me:26857",
+
+    "_comment2": "描述",
+
+    "description": {
+        "title": "關於天堂伺服器",
+        "paragraphs": [
+            "歡迎來到天堂伺服器！本伺服器提供全中文化與屍體模組，讓大家輕鬆遊玩。",
+            "但很可惜，伺服器已經永久關閉，未來預計公開地圖檔。令人興奮的是，新的伺服器「天堂Ⅱ模組」正在全力建構中，敬請期待。"
+        ],
+        "youtubeEmbedUrl": "https://www.youtube.com/embed/48Wx8N0zOfI?si=p3AxV6G5LjURuPhb"
+    },
+    
+    "_comment3": "圖庫",
+
+    "gallery": [
+        {
+            "src": "images/server-aether/1.png",
+            "alt": "環境生態",
+            "meta": "2025年1月1日 ｜ 環境生態"
+        },
+        {
+            "src": "images/server-aether/2.png",
+            "alt": "女武神神殿",
+            "meta": "2025年1月1日 ｜ 女武神神殿"
+        }
+    ],
+
+    "_comment4": "更新日誌",
+
+    "changelog": [
+        {
+            "title": "伺服器永久關閉",
+            "date": "2025年",
+            "details": []
+        },
+        {
+            "title": "伺服器用戶端加裝地圖模組",
+            "date": "2024年5月5日",
+            "details": [
+                "注意：舊的導航點將被刪除。"
+            ]
+        },
+        {
+            "title": "天堂模組伺服器正式啟動",
+            "date": "2024年4月21日",
+            "details": []
+        }
+    ],
+
+    "_comment5": "右側資訊",
+
+    "sidebar": {
+        "gameType": "Minecraft Java 版",
+        "version": "1.20.1",
+        "notice": "本伺服器已永久關閉",
+        "details": {
+            "clientType": "Forge 模組＋優化架構",
+            "customerType": "Forge 模組＋優化架構",
+            "host": "Aternos",
+            "creator": "鄭世岡",
+            "createdAt": "2024年4月21日"
+        }
+    }
+}
