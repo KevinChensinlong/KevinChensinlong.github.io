@@ -1,0 +1,33 @@
+{
+    "_comment1": "主橫幅",
+
+    "serverName": "超方便伺服器",
+    "subtitle": "託管於 IceHost 平台的數據包伺服器。",
+    "ipAddress": "convenient.mcs.tw",
+    "serverIcon": "images/server-convience/icon.png",
+
+    "_comment2": "描述",
+
+    "description": {
+        "title": "關於超方便伺服器",
+        "paragraphs": [
+            "無資訊。"
+        ]
+    },
+
+
+    "_comment5": "右側資訊",
+
+    "sidebar": {
+        "gameType": "Minecraft Java 版",
+        "version": "1.20.4",
+        "notice": "本伺服器已關閉",
+        "details": {
+            "clientType": "數據包",
+            "customerType": "原版",
+            "host": "IceHost",
+            "creator": "d0.w.0b",
+            "createdAt": "未知"
+        }
+    }
+}

@@ -1,0 +1,33 @@
+{
+    "_comment1": "主橫幅",
+
+    "serverName": "槍械生存 (模組)",
+    "subtitle": "託管於 Aternos 平台的第一個槍械模組生存伺服器。",
+    "ipAddress": "chen_1004-ANcd.aternos.me:34745",
+    "serverIcon": "images/server-guns_survive/icon.png",
+
+    "_comment2": "描述",
+
+    "description": {
+        "title": "關於槍械生存伺服器",
+        "paragraphs": [
+            "無資料。"
+        ]
+    },
+
+
+    "_comment5": "右側資訊",
+
+    "sidebar": {
+        "gameType": "Minecraft Java 版",
+        "version": "1.20.1",
+        "notice": "需安裝指定模組",
+        "details": {
+            "clientType": "Forge 模組",
+            "customerType": "Forge 模組",
+            "host": "Aternos",
+            "creator": "陳靖展",
+            "createdAt": "未知"
+        }
+    }
+}

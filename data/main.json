@@ -4,6 +4,7 @@
     "serverName": "主伺服器",
     "subtitle": "託管於 Aternos 平台的官方主伺服器，旨在同樂。",
     "ipAddress": "solomon10129MCJ.aternos.me:16226",
+    "serverIcon": "images/server-main/icon.png",
     
     "_comment2": "描述",
 

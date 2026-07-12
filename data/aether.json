@@ -4,6 +4,7 @@
     "serverName": "天堂 (模組)",
     "subtitle": "託管於 Aternos 平台的第一個官方模組伺服器，旨在同樂。",
     "ipAddress": "SKY1gx4P.aternos.me:26857",
+    "serverIcon": "images/server-aether/icon.png",
 
     "_comment2": "描述",
 
@@ -15,7 +16,7 @@
         ],
         "youtubeEmbedUrl": "https://www.youtube.com/embed/48Wx8N0zOfI?si=p3AxV6G5LjURuPhb"
     },
-    
+
     "_comment3": "圖庫",
 
     "gallery": [

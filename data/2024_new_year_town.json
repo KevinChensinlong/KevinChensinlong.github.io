@@ -1,0 +1,42 @@
+{
+    "_comment1": "主橫幅",
+
+    "serverName": "2024 新年城",
+    "subtitle": "託管於 Aternos 平台的新年主題伺服器",
+    "ipAddress": "New_Year_Town.aternos.me:41817",
+    "serverIcon": "images/server-2024_new_year_town/icon.png",
+
+    "_comment2": "描述",
+
+    "description": {
+        "title": "關於天堂伺服器",
+        "paragraphs": [
+            "無資料。"
+        ]
+    },
+
+    "_comment3": "圖庫",
+
+    "gallery": [
+        {
+            "src": "images/server-2024_new_year_town/1.png",
+            "alt": "新年主城",
+            "meta": "2023年12月31日 ｜ 新年主城"
+        }
+    ],
+
+    "_comment5": "右側資訊",
+
+    "sidebar": {
+        "gameType": "Minecraft Java 版",
+        "version": "1.19.2",
+        "notice": "本伺服器已永久關閉",
+        "details": {
+            "clientType": "Fabric 優化架構",
+            "customerType": "原版",
+            "host": "Aternos",
+            "creator": "鄭世岡",
+            "createdAt": "2023年12月31日"
+        }
+    }
+}
