@@ -201,9 +201,27 @@
             globalServerIP = data.ipAddress; // 綁定複製按鈕的 IP
 
             // 設定圖標
-            const iconUrl = `images/server-${window.location.search.includes('main') ? 'main' : 'aether'}/icon.png`; // 防呆預設路徑規則
-            document.getElementById('server-icon').style.backgroundImage = `url('images/server-${window.location.search.get?.('server') || 'aether'}/icon.png')`;
-            document.getElementById('server-icon').style.backgroundSize = "cover";
+            // 智慧圖標防呆機制
+            const serverIconEl = document.getElementById('server-icon');
+
+            if (data.serverIcon) {
+                // 1. 如果 JSON 有設定路徑，嘗試載入
+                const imgTest = new Image();
+                imgTest.src = data.serverIcon;
+
+                // 圖片存在，順利載入：套用 JSON 的圖片
+                imgTest.onload = () => {
+                    serverIconEl.style.backgroundImage = `url('${data.serverIcon}')`;
+                    serverIconEl.style.backgroundSize = "cover";
+                    serverIconEl.style.backgroundPosition = "center";
+                };
+
+                // 2. 防呆：如果圖片路徑失效（找不到檔案），就維持 CSS 原本的彩色預設樣式
+                imgTest.onerror = () => {
+                    console.warn(`[圖標載入失敗] 找不到路徑：${data.serverIcon}，已自動還原為預設彩色圖標。`);
+                    // 這裡不需額外寫程式碼，因為如果載入失敗，就不會動到 CSS 原本設定好的 background
+                };
+            }
 
             // 分頁一：描述與影片
             const videoContainer = document.getElementById('video-container');
@@ -262,7 +280,7 @@
             // 右側資訊欄欄位
             document.getElementById('sb-game-type').textContent = data.sidebar.gameType;
             document.getElementById('sb-version').textContent = data.sidebar.version;
-            
+
             // 注意事項卡片防呆控制 (若無注意事項就完全隱藏卡片)
             if (data.sidebar.notice) {
                 document.getElementById('sb-notice').textContent = data.sidebar.notice;
@@ -402,8 +420,10 @@
     </script>
 
     <!-- 頁尾宣告 -->
-    <footer style="background-color: #16171a; border-top: 1px solid #2c2e33; padding: 40px 20px; color: #a3a7af; margin-top: 50px;">
-        <div style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
+    <footer
+        style="background-color: #16171a; border-top: 1px solid #2c2e33; padding: 40px 20px; color: #a3a7af; margin-top: 50px;">
+        <div
+            style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
             <div>
                 <div style="font-size: 1.2rem; font-weight: bold; color: #fff; margin-bottom: 6px;">伺服器公告專案</div>
                 <p style="margin: 0; font-size: 0.95rem;">本站為開源專案，歡迎至 GitHub 參與貢獻。</p>
@@ -423,7 +443,8 @@
                     onmouseout="this.style.textDecoration='none'; this.style.color='#a3a7af';">隱私政策</a>
             </div>
         </div>
-        <div style="max-width: 1200px; margin: 20px auto 0 auto; padding-top: 20px; border-top: 1px solid #2c2e33; text-align: center; font-size: 0.85rem;">
+        <div
+            style="max-width: 1200px; margin: 20px auto 0 auto; padding-top: 20px; border-top: 1px solid #2c2e33; text-align: center; font-size: 0.85rem;">
             &copy; 2026 鄭世岡 ｜ 託管於 GitHub Pages ｜ Minecraft 為 Mojang AB 之商標
         </div>
     </footer>

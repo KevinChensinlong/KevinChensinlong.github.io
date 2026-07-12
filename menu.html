@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,18 +8,27 @@
     <style>
         /* 完美復刻 Modrinth 配色與全域樣式 */
         :root {
-            --bg-main: #111216;       /* 最底層超暗背景 */
-            --bg-card: #1c1e22;       /* 卡片與區塊背景 */
-            --bg-nav: #16171a;        /* 導覽列背景 */
-            --color-text: #eaebee;    /* 主文字顏色 */
-            --color-muted: #a3a7af;   /* 說明小字顏色 */
-            --brand-green: #1bd96a;   /* 正常狀態背景色 */
-            --brand-green-hover: #22ff85; /* 滑鼠移上去時背景色漸變 */
-            --border-color: #2c2e33;  /* 邊框線條顏色 */
-            
+            --bg-main: #111216;
+            /* 最底層超暗背景 */
+            --bg-card: #1c1e22;
+            /* 卡片與區塊背景 */
+            --bg-nav: #16171a;
+            /* 導覽列背景 */
+            --color-text: #eaebee;
+            /* 主文字顏色 */
+            --color-muted: #a3a7af;
+            /* 說明小字顏色 */
+            --brand-green: #1bd96a;
+            /* 正常狀態背景色 */
+            --brand-green-hover: #22ff85;
+            /* 滑鼠移上去時背景色漸變 */
+            --border-color: #2c2e33;
+            /* 邊框線條顏色 */
+
             /* 狀態燈號配色 */
             --status-green: #1bd96a;
             --status-red: #ff4a4a;
+            --status-gray: #808080;
             --status-blue: #38bdf8;
         }
 
@@ -49,7 +59,7 @@
             align-items: center;
             padding: 14px 20px;
         }
-        
+
         header h1 {
             margin: 0;
             font-size: 1.5rem;
@@ -93,7 +103,7 @@
 
         /* 讓「伺服器」頁籤高亮 */
         nav a.active {
-            background-color: #1b3524; 
+            background-color: #1b3524;
             color: var(--brand-green);
             font-weight: 600;
         }
@@ -117,7 +127,7 @@
             margin: 0;
             font-weight: 800;
             letter-spacing: 2px;
-            text-shadow: 0 4px 10px rgba(0,0,0,0.7);
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
         }
 
         /* 主內容包裝區 */
@@ -163,15 +173,33 @@
             margin-right: 8px;
             display: inline-block;
         }
-        .dot-green { background-color: var(--status-green); box-shadow: 0 0 8px var(--status-green); }
-        .dot-red { background-color: var(--status-red); box-shadow: 0 0 8px var(--status-red); }
-        .dot-blue { background-color: var(--status-blue); box-shadow: 0 0 8px var(--status-blue); }
+
+        .dot-green {
+            background-color: var(--status-green);
+            box-shadow: 0 0 8px var(--status-green);
+        }
+
+        .dot-red {
+            background-color: var(--status-red);
+            box-shadow: 0 0 8px var(--status-red);
+        }
+
+        .dot-gray {
+            background-color: var(--status-gray);
+            box-shadow: 0 0 8px var(--status-gray);
+        }
+
+        .dot-blue {
+            background-color: var(--status-blue);
+            box-shadow: 0 0 8px var(--status-blue);
+        }
 
         .notice-text {
             color: var(--color-muted);
             font-size: 1rem;
             font-weight: 500;
         }
+
         .notice-highlight {
             color: #fff;
             font-weight: bold;
@@ -220,10 +248,12 @@
                 gap: 12px;
                 padding: 20px;
             }
+
             .server-actions {
                 text-align: left;
                 width: 100%;
             }
+
             .btn-detail {
                 width: 100%;
                 box-sizing: border-box;
@@ -244,6 +274,7 @@
             font-size: 1.05rem;
             color: var(--color-muted);
         }
+
         .server-version-block strong {
             color: #fff;
         }
@@ -289,6 +320,7 @@
         }
     </style>
 </head>
+
 <body>
 
     <header>
@@ -307,11 +339,12 @@
     </div>
 
     <div class="container">
-        
+
         <div class="status-header-bar">
             <div class="legend-group">
                 <div class="legend-item"><span class="dot dot-green"></span>運作中</div>
                 <div class="legend-item"><span class="dot dot-red"></span>暫停運作</div>
+                <div class="legend-item"><span class="dot dot-gray"></span>永久關閉</div>
                 <div class="legend-item"><span class="dot dot-blue"></span>建構中</div>
             </div>
             <div class="notice-text">
@@ -320,6 +353,7 @@
         </div>
 
         <div class="server-list">
+
 
             <div class="server-row">
                 <div class="server-name-block">
@@ -337,21 +371,6 @@
                 </div>
             </div>
 
-            <div class="server-row">
-                <div class="server-name-block">
-                    <span class="dot dot-green" style="margin-right: 12px;"></span>
-                    一格空島
-                </div>
-                <div class="server-version-block">
-                    版本：<strong>1.21.6</strong>
-                </div>
-                <div>
-                    <span class="server-ip-block">oneblockVmLn.aternos.me:15111</span>
-                </div>
-                <div class="server-actions">
-                    <a href="server-pages-template.html?server=one_block" class="btn-detail">詳細資料</a>
-                </div>
-            </div>
 
             <div class="server-row">
                 <div class="server-name-block">
@@ -369,37 +388,40 @@
                 </div>
             </div>
 
-            <div class="server-row">
-                <div class="server-name-block">
-                    <span class="dot dot-red" style="margin-right: 12px;"></span>
-                    天堂 (模組)
-                </div>
-                <div class="server-version-block">
-                    版本：<strong>1.20.1</strong>
-                </div>
-                <div>
-                    <span class="server-ip-block">SKY1gx4P.aternos.me:24369</span>
-                </div>
-                <div class="server-actions">
-                    <a href="server-pages-template.html?server=aether" class="btn-detail">詳細資料</a>
-                </div>
-            </div>
 
             <div class="server-row">
                 <div class="server-name-block">
-                    <span class="dot dot-blue" style="margin-right: 12px;"></span>
-                    天堂 Ⅱ (模組)
+                    <span class="dot dot-red" style="margin-right: 12px;"></span>
+                    一格空島
                 </div>
                 <div class="server-version-block">
-                    版本：<span style="color: var(--color-muted); font-style: italic;">未填</span>
+                    版本：<strong>1.21.6</strong>
+                </div>
+                <div>
+                    <span class="server-ip-block">oneblockVmLn.aternos.me:15111</span>
+                </div>
+                <div class="server-actions">
+                    <a href="server-pages-template.html?server=one_block" class="btn-detail">詳細資料</a>
+                </div>
+            </div>
+
+
+            <div class="server-row">
+                <div class="server-name-block">
+                    <span class="dot dot-red" style="margin-right: 12px;"></span>
+                    墜落世界
+                </div>
+                <div class="server-version-block">
+                    版本：<strong>1.15.2</strong>
                 </div>
                 <div>
                     <span class="server-ip-block ip-empty">未提供 IP 位置</span>
                 </div>
                 <div class="server-actions">
-                    <a href="server-pages-template.html?server=aether_Ⅱ" class="btn-detail">詳細資料</a>
+                    <a href="server-pages-template.html?server=falling" class="btn-detail">詳細資料</a>
                 </div>
             </div>
+
 
             <div class="server-row">
                 <div class="server-name-block">
@@ -417,9 +439,113 @@
                 </div>
             </div>
 
+
             <div class="server-row">
                 <div class="server-name-block">
                     <span class="dot dot-red" style="margin-right: 12px;"></span>
+                    主題伺服器 (暑期限定)
+                </div>
+                <div class="server-version-block">
+                    版本：<strong>1.18.2</strong>
+                </div>
+                <div>
+                    <span class="server-ip-block">Stars_World_.aternos.me:23545</span>
+                </div>
+                <div class="server-actions">
+                    <a href="server-pages-template.html?server=stars_world" class="btn-detail">詳細資料</a>
+                </div>
+            </div>
+
+
+            <div class="server-row">
+                <div class="server-name-block">
+                    <span class="dot dot-red" style="margin-right: 12px;"></span>
+                    螺旋跑酷塔 3
+                </div>
+                <div class="server-version-block">
+                    版本：<strong>1.21</strong>
+                </div>
+                <div>
+                    <span class="server-ip-block">Parkour_Spiral_.aternos.me:60881</span>
+                </div>
+                <div class="server-actions">
+                    <a href="server-pages-template.html?server=parkour_spiral3" class="btn-detail">詳細資料</a>
+                </div>
+            </div>
+
+
+            <div class="server-row">
+                <div class="server-name-block">
+                    <span class="dot dot-red" style="margin-right: 12px;"></span>
+                    超方便伺服器
+                </div>
+                <div class="server-version-block">
+                    版本：<strong>1.20.4</strong>
+                </div>
+                <div>
+                    <span class="server-ip-block">convenient.mcs.tw</span>
+                </div>
+                <div class="server-actions">
+                    <a href="server-pages-template.html?server=convience" class="btn-detail">詳細資料</a>
+                </div>
+            </div>
+
+
+            <div class="server-row">
+                <div class="server-name-block">
+                    <span class="dot dot-blue" style="margin-right: 12px;"></span>
+                    天堂 Ⅱ (模組)
+                </div>
+                <div class="server-version-block">
+                    版本：<span style="color: var(--color-muted); font-style: italic;">未填</span>
+                </div>
+                <div>
+                    <span class="server-ip-block ip-empty">未提供 IP 位置</span>
+                </div>
+                <div class="server-actions">
+                    <a href="server-pages-template.html?server=aether_Ⅱ" class="btn-detail">詳細資料</a>
+                </div>
+            </div>
+
+
+            <div class="server-row">
+                <div class="server-name-block">
+                    <span class="dot dot-gray" style="margin-right: 12px;"></span>
+                    天堂 (模組)
+                </div>
+                <div class="server-version-block">
+                    版本：<strong>1.20.1</strong>
+                </div>
+                <div>
+                    <span class="server-ip-block">SKY1gx4P.aternos.me:24369</span>
+                </div>
+                <div class="server-actions">
+                    <a href="server-pages-template.html?server=aether" class="btn-detail">詳細資料</a>
+                </div>
+            </div>
+
+            
+            <div class="server-row">
+                <div class="server-name-block">
+                    <span class="dot dot-gray" style="margin-right: 12px;"></span>
+                    2024 新年城
+                </div>
+                <div class="server-version-block">
+                    版本：<strong>1.19.2</strong>
+                </div>
+                <div>
+                    <span class="server-ip-block">New_Year_Town.aternos.me:41817</span>
+                </div>
+                <div class="server-actions">
+                    <a href="server-pages-template.html?server=2024_new_year_town" class="btn-detail">詳細資料</a>
+                </div>
+            </div>
+
+
+
+            <div class="server-row">
+                <div class="server-name-block">
+                    <span class="dot dot-gray" style="margin-right: 12px;"></span>
                     數據包生存
                 </div>
                 <div class="server-version-block">
@@ -433,39 +559,42 @@
                 </div>
             </div>
 
+
         </div>
     </div>
 
-    <footer style="background-color: #16171a; border-top: 1px solid #2c2e33; padding: 40px 20px; color: #a3a7af; margin-top: 50px;">
-        <div style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
-        
+    <footer
+        style="background-color: #16171a; border-top: 1px solid #2c2e33; padding: 40px 20px; color: #a3a7af; margin-top: 50px;">
+        <div
+            style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
+
             <div>
                 <div style="font-size: 1.2rem; font-weight: bold; color: #fff; margin-bottom: 6px;">伺服器公告專案</div>
                 <p style="margin: 0; font-size: 0.95rem;">本站為開源專案，歡迎至 GitHub 參與貢獻。</p>
             </div>
 
             <div style="display: flex; gap: 20px;">
-                <a href="https://github.com/KevinChensinlong/KevinChensinlong.github.io" target="_blank" 
-                   style="color: #a3a7af; text-decoration: none; transition: 0.2s;"
-                   onmouseover="this.style.textDecoration='underline'; this.style.color='#fff';" 
-                   onmouseout="this.style.textDecoration='none'; this.style.color='#a3a7af';">
-                   GitHub 原始碼
+                <a href="https://github.com/KevinChensinlong/KevinChensinlong.github.io" target="_blank"
+                    style="color: #a3a7af; text-decoration: none; transition: 0.2s;"
+                    onmouseover="this.style.textDecoration='underline'; this.style.color='#fff';"
+                    onmouseout="this.style.textDecoration='none'; this.style.color='#a3a7af';">
+                    GitHub 原始碼
                 </a>
-                <a href="#" 
-                   style="color: #a3a7af; text-decoration: none; transition: 0.2s;"
-                   onmouseover="this.style.textDecoration='underline'; this.style.color='#fff';" 
-                   onmouseout="this.style.textDecoration='none'; this.style.color='#a3a7af';">服務條款</a>
-                <a href="#" 
-                   style="color: #a3a7af; text-decoration: none; transition: 0.2s;"
-                   onmouseover="this.style.textDecoration='underline'; this.style.color='#fff';" 
-                   onmouseout="this.style.textDecoration='none'; this.style.color='#a3a7af';">隱私政策</a>
+                <a href="#" style="color: #a3a7af; text-decoration: none; transition: 0.2s;"
+                    onmouseover="this.style.textDecoration='underline'; this.style.color='#fff';"
+                    onmouseout="this.style.textDecoration='none'; this.style.color='#a3a7af';">服務條款</a>
+                <a href="#" style="color: #a3a7af; text-decoration: none; transition: 0.2s;"
+                    onmouseover="this.style.textDecoration='underline'; this.style.color='#fff';"
+                    onmouseout="this.style.textDecoration='none'; this.style.color='#a3a7af';">隱私政策</a>
             </div>
         </div>
-    
-        <div style="max-width: 1200px; margin: 20px auto 0 auto; padding-top: 20px; border-top: 1px solid #2c2e33; text-align: center; font-size: 0.85rem;">
+
+        <div
+            style="max-width: 1200px; margin: 20px auto 0 auto; padding-top: 20px; border-top: 1px solid #2c2e33; text-align: center; font-size: 0.85rem;">
             &copy; 2026 鄭世岡 ｜ 託管於 GitHub Pages ｜ Minecraft 為 Mojang AB 之商標
         </div>
     </footer>
 
 </body>
+
 </html>
