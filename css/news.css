@@ -1,0 +1,282 @@
+/* ==========================================================================
+   遊戲新聞專屬高階樣式表 (防抖動 + 智慧多圖相簿 + 沉浸式大圖燈箱)
+   ========================================================================== */
+
+/* 1. 歷史公告清單側邊欄 */
+.news-sidebar {
+    background-color: var(--bg-nav);
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    height: fit-content;
+    max-height: 750px;
+}
+
+.sidebar-header {
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border-color);
+    background-color: #111216;
+}
+
+.sidebar-header h3 {
+    margin: 0;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+.news-list {
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 2. 左側新聞單顆按鈕項目 */
+.news-item-btn {
+    width: 100%;
+    padding: 18px 20px;
+    background: none;
+    border: none;
+    border-bottom: 1px solid var(--border-color);
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.news-item-btn:last-child {
+    border-bottom: none;
+}
+
+.news-item-btn:hover {
+    background-color: #24262b;
+}
+
+/* 選中狀態（使用內陰影，實體外寬不變，防抖動） */
+.news-item-btn.active {
+    background-color: #1b3524;
+    box-shadow: inset 4px 0 0 0 var(--brand-green);
+    padding-left: 20px;
+}
+
+.news-item-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+}
+
+.news-item-date {
+    color: var(--color-muted);
+}
+
+.news-item-tag {
+    color: var(--brand-green);
+    font-weight: 600;
+}
+
+.news-item-title {
+    font-size: 1.05rem;
+    color: var(--color-muted);
+    font-weight: 600;
+
+    /* 💡 移除原本的單行切斷，改為平滑自動換行 */
+    white-space: normal;
+    /* 允許文字正常換行 */
+    word-break: break-all;
+    /* 遇到網址或長英文時強制換行，不撐破外框 */
+    text-overflow: clip;
+    /* 移除省略號 */
+
+    line-height: 1.4;
+    /* 調整換行後的行高，視覺更舒適 */
+    transition: color 0.2s;
+}
+
+.news-item-btn:hover .news-item-title {
+    color: var(--color-text);
+}
+
+.news-item-btn.active .news-item-title {
+    color: #fff;
+}
+
+/* ==========================================================================
+   3. 右側內文詳細面板
+   ========================================================================== */
+.news-content-panel {
+    min-width: 0;
+}
+
+.news-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    padding: 35px 40px;
+    min-height: 480px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.news-meta-top {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+}
+
+.news-date {
+    font-size: 0.95rem;
+    color: var(--color-muted);
+}
+
+.news-tag-pill {
+    background-color: #24262b;
+    color: var(--color-muted);
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border: 1px solid var(--border-color);
+}
+
+.news-title {
+    margin: 0;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 0.5px;
+}
+
+.news-divider {
+    border: none;
+    border-top: 1px solid var(--border-color);
+    margin: 24px 0;
+}
+
+.news-body {
+    font-size: 1.05rem;
+    color: var(--color-muted);
+    line-height: 1.75;
+}
+
+.news-body p {
+    margin: 0 0 16px 0;
+}
+
+.news-body p:last-child {
+    margin-bottom: 0;
+}
+
+/* 💡 核心功能：新聞內文超連結美化與懸停變色反應（無底線高級感版） */
+.news-body a {
+    color: #58a6ff;
+    /* 精緻科技藍 */
+    text-decoration: none;
+    /* ✂️ 移除預設底線，讓排版更乾淨 */
+    font-weight: 500;
+    transition: color 0.15s ease;
+    /* 變色平滑過渡 */
+}
+
+.news-body a:hover {
+    color: #79c0ff;
+    /* 滑鼠移上去時亮化，變成極光青藍色 */
+    text-decoration: none;
+    /* 確保懸停時也絕對不會冒出底線 */
+}
+
+/* ==========================================================================
+   4. 智慧型新聞多圖相簿網格
+   ========================================================================== */
+.news-gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 14px;
+    margin-bottom: 24px;
+    width: 100%;
+}
+
+.news-gallery-grid.single-img {
+    grid-template-columns: 1fr;
+}
+
+.news-gallery-grid.double-img {
+    grid-template-columns: 1fr 1fr;
+}
+
+.news-gallery-item {
+    background-color: #111216;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    aspect-ratio: 16 / 10;
+    cursor: pointer !important;
+}
+
+.news-gallery-grid.single-img .news-gallery-item {
+    aspect-ratio: auto;
+    max-height: 450px;
+}
+
+.news-gallery-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: filter 0.25s ease;
+}
+
+.news-gallery-img:hover {
+    filter: brightness(0.8);
+}
+
+/* ==========================================================================
+   5. 新聞專屬圖片放大燈箱
+   ========================================================================== */
+.news-lightbox {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(11, 12, 14, 0.95);
+    backdrop-filter: blur(6px);
+    box-sizing: border-box;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.news-lightbox.show {
+    display: flex;
+}
+
+.news-lightbox-content {
+    display: block;
+    width: auto;
+    max-width: 85%;
+    max-height: 85vh;
+    object-fit: contain;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.6);
+    animation: newsZoomIn 0.22s cubic-bezier(0.1, 0.8, 0.25, 1);
+}
+
+@keyframes newsZoomIn {
+    from {
+        transform: scale(0.95);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
