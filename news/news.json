@@ -1,0 +1,61 @@
+[
+  {
+    "id": "20260719-welcome",
+    "title": "新聞看板全新啟用！",
+    "image": [
+      "images/news/4.jpeg"
+    ],
+    "date": "2026/7/19",
+    "category": "公告",
+    "paragraphs": [
+      "歡迎來到全新的伺服器新聞看板！這裡將會不定期發布伺服器的最新動態、維護通知與小優化廣播。",
+      "採用流暢的無縫動態看板設計，點擊左側列表即可快速切換閱讀！"
+    ]
+  },
+  {
+    "id": "20260215-raiway",
+    "title": "環球鐵路E線建設完成！",
+    "image": [
+      "images/news/3_1.png",
+      "images/news/3_2.png",
+      "images/news/3_3.png"
+    ],
+    "date": "2026/2/15",
+    "category": "建設",
+    "paragraphs": [
+      "鐵路E線已經建設完成，歡迎搭乘。現有E線與B線的快速轉乘。",
+      "北洋鐵路建設局敬上"
+    ]
+  },
+  {
+    "id": "20250126-view-distance",
+    "title": "如何在 Aternos 上擁有更遠的視野距離？",
+    "image": [
+      "images/news/2_1.png",
+      "images/news/2_2.png"
+    ],
+    "date": "2026/2/4",
+    "category": "優化",
+    "paragraphs": [
+      "<strong>Bobby</strong><br>Bobby 是一個 Minecraft 模組，允許渲染距離超過伺服器的視距設定。它透過記錄並儲存（在）伺服器發送的所有區塊來達成此目標，然後可以在區塊超出伺服器視距時載入並顯示。",
+      "Bobby 在設定檔被更改時會自動重新載入。遊戲內設定畫面請安裝 <a href='https://modrinth.com/mod/modmenu' target='_blank'>ModMenu</a> 和 <a href='https://modrinth.com/mod/cloth-config' target='_blank'>ClothConfig</a>。",
+      "下載連結 (Fabric)：<a href='https://modrinth.com/mod/bobby' target='_blank'>Bobby - Minecraft 模組</a>",
+      "<br><strong>Farsight</strong><br>Farsight 是一個用戶端工具，讓你功能看到比伺服器視距更遠的距離。它的運作方式是讓客戶端保留區塊，即使伺服器卸載了它們。允許超過 32 個區塊的視距。這只在客戶端是必須的。",
+      "下載連結 (Forge/Neo)：<a href='https://www.curseforge.com/minecraft/mc-mods/farsight-forge-neo' target='_blank'>Farsight [Forge/Neo] - Minecraft Mods - CurseForge</a>",
+      "下載連結 (Fabric)：<a href='https://www.curseforge.com/minecraft/mc-mods/farsight-fabric' target='_blank'>Farsight [Fabric] - Minecraft 模組 - CurseForge</a>"
+    ]
+  },
+  {
+    "id": "20250126-pigman-tower",
+    "title": "殭屍豬人塔完工",
+    "image": [
+      "images/news/1.png"
+    ],
+    "date": "2025/1/26",
+    "category": "建設",
+    "paragraphs": [
+      "耗費大量資源與人力，終於於 1 月 26 日建造完成殭屍豬人塔。",
+      "本豬人塔共分上下兩層，皆由岩漿塊所構成，將效率最大化；下方蒐集系統則由 4 台分類機進行蒐集，完全不需要翻箱倒櫃尋找物品。"
+    ]
+  }
+]
