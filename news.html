@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>遊戲新聞公告 - 官方網站</title>
+    <!-- 讀取專屬新聞樣式表 -->
+    <link rel="stylesheet" href="css/news.css">
+    <style>
+        /* ==========================================================================
+           完美同步首頁的 Modrinth 核心全域與頁首頁尾樣式
+           ========================================================================== */
+        :root {
+            --bg-main: #111216;
+            --bg-card: #1c1e22;
+            --bg-nav: #16171a;
+            --color-text: #eaebee;
+            --color-muted: #a3a7af;
+            --brand-green: #1bd96a;
+            --brand-green-hover: #22ff85;
+            --border-color: #2c2e33;
+        }
+
+        body {
+            font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans TC", sans-serif;
+            background-color: var(--bg-main);
+            color: var(--color-text);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            font-size: 1.1rem;
+        }
+
+        header {
+            background-color: var(--bg-nav);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 20px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        header h1 a {
+            color: var(--color-text);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        header h1 a:hover {
+            color: var(--brand-green);
+        }
+
+        nav {
+            display: flex;
+            gap: 4px;
+            background-color: #111216;
+            padding: 4px;
+            border-radius: 30px;
+            border: 1px solid var(--border-color);
+        }
+
+        nav a {
+            color: var(--color-muted);
+            text-decoration: none;
+            padding: 6px 18px;
+            border-radius: 20px;
+            transition: all 0.2s ease;
+            font-size: 1.05rem;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            color: var(--color-text);
+            background-color: #24262b;
+        }
+
+        nav a.active {
+            background-color: #1b3524;
+            color: var(--brand-green);
+            font-weight: 600;
+        }
+
+        .news-dashboard {
+            max-width: 1200px;
+            margin: 30px auto !important;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 300px 1fr !important;
+            gap: 24px !important;
+        }
+
+        @media (max-width: 768px) {
+            .news-dashboard {
+                grid-template-columns: 1fr !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 頂部導覽列 -->
+    <header>
+        <div class="header-container">
+            <h1><a href="index.html">伺服器公告</a></h1>
+            <nav>
+                <a href="index.html">首頁</a>
+                <a href="menu.html">伺服器</a>
+                <a href="news.html" class="active">遊戲新聞</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 主區塊：雙欄動態看板 -->
+    <div class="news-dashboard">
+
+        <!-- 左欄：歷史公告清單 -->
+        <aside class="news-sidebar">
+            <div class="sidebar-header">
+                <h3>歷史公告清單</h3>
+            </div>
+            <div id="news-list-container" class="news-list">
+                <p style="color: var(--color-muted); padding: 20px; text-align: center;">新聞載入中...</p>
+            </div>
+        </aside>
+
+        <!-- 右欄：新聞內文詳情展示區 -->
+        <main class="news-content-panel">
+            <article class="news-card">
+                <div class="news-header">
+                    <div class="news-meta-top">
+                        <span id="active-news-date" class="news-date">----/--/--</span>
+                        <span id="active-news-tag" class="news-tag-pill">分類</span>
+                    </div>
+                    <h2 id="active-news-title" class="news-title">請選擇一則新聞</h2>
+                </div>
+                <hr class="news-divider">
+                <div id="active-news-body" class="news-body">
+                    <p style="color: var(--color-muted);">請點擊左側列表的標題來閱讀完整的公告內容。</p>
+                </div>
+            </article>
+        </main>
+
+    </div>
+
+    <!-- 智慧型動態燈箱容器 -->
+    <div id="news-lightbox" class="news-lightbox" onclick="closeLightbox()">
+        <img id="news-lightbox-img" class="news-lightbox-content" src="" alt="放大圖示">
+    </div>
+
+    <!-- 頁尾宣告 -->
+    <footer style="background-color: #16171a; border-top: 1px solid #2c2e33; padding: 40px 20px; color: #a3a7af; margin-top: 50px;">
+        <div style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
+            <div>
+                <div style="font-size: 1.2rem; font-weight: bold; color: #fff; margin-bottom: 6px;">伺服器公告專案</div>
+                <p style="margin: 0; font-size: 0.95rem;">本站為開源專案，歡迎至 GitHub 參與貢獻。</p>
+            </div>
+            <div style="display: flex; gap: 20px;">
+                <a href="https://github.com/KevinChensinlong/KevinChensinlong.github.io" target="_blank" style="color: #a3a7af; text-decoration: none; transition: 0.2s;">GitHub 原始碼</a>
+                <a href="#" style="color: #a3a7af; text-decoration: none; transition: 0.2s;">服務條款</a>
+                <a href="#" style="color: #a3a7af; text-decoration: none; transition: 0.2s;">隱私政策</a>
+            </div>
+        </div>
+        <div style="max-width: 1200px; margin: 20px auto 0 auto; padding-top: 20px; border-top: 1px solid #2c2e33; text-align: center; font-size: 0.85rem;">
+            &copy; 2026 鄭世岡 ｜ 託管於 GitHub Pages ｜ Minecraft 為 Mojang AB 之商標
+        </div>
+    </footer>
+
+    <!-- 智慧內核指令腳本 -->
+    <script>
+        let allNewsData = [];
+
+        document.addEventListener("DOMContentLoaded", () => {
+            fetch('news/news.json')
+                .then(response => {
+                    if (!response.ok) throw new Error('無法讀取新聞資料庫！');
+                    return response.json();
+                })
+                .then(data => {
+                    allNewsData = data;
+                    renderNewsSidebar();
+                    if (allNewsData.length > 0) {
+                        switchNews(allNewsData[0].id);
+                    }
+                })
+                .catch(error => {
+                    console.error(error);
+                    document.getElementById('news-list-container').innerHTML = `<p style="color:#ff4a4a; padding:20px; text-align:center;">新聞載入失敗，請檢查格式。</p>`;
+                });
+        });
+
+        function renderNewsSidebar() {
+            const listContainer = document.getElementById('news-list-container');
+            listContainer.innerHTML = "";
+            allNewsData.forEach(news => {
+                listContainer.innerHTML += `
+                    <button id="btn-${news.id}" class="news-item-btn" onclick="switchNews('${news.id}')">
+                        <div class="news-item-meta">
+                            <span class="news-item-date">${news.date}</span>
+                            <span class="news-item-tag">${news.category || '公告'}</span>
+                        </div>
+                        <div class="news-item-title">${news.title}</div>
+                    </button>
+                `;
+            });
+        }
+
+        function switchNews(newsId) {
+            const selectedNews = allNewsData.find(item => item.id === newsId);
+            if (!selectedNews) return;
+
+            document.getElementById('active-news-title').textContent = selectedNews.title;
+            document.getElementById('active-news-date').textContent = selectedNews.date;
+            document.getElementById('active-news-tag').textContent = selectedNews.category || '公告';
+
+            const bodyContainer = document.getElementById('active-news-body');
+            bodyContainer.innerHTML = "";
+
+            let rawImages = selectedNews.image || selectedNews.images || [];
+            let finalImgList = [];
+
+            if (Array.isArray(rawImages)) {
+                finalImgList = rawImages.filter(img => typeof img === 'string' && img.trim() !== "");
+            } else if (typeof rawImages === 'string' && rawImages.trim() !== "") {
+                finalImgList.push(rawImages);
+            }
+
+            if (finalImgList.length > 0) {
+                const imgCount = finalImgList.length;
+                let gridClass = "news-gallery-grid";
+                if (imgCount === 1) gridClass += " single-img";
+                if (imgCount === 2) gridClass += " double-img";
+
+                let galleryHtml = `<div class="${gridClass}">`;
+                finalImgList.forEach(imgUrl => {
+                    galleryHtml += `
+                        <div class="news-gallery-item" onclick="openLightbox('${imgUrl}')">
+                            <img src="${imgUrl}" alt="公告配圖" class="news-gallery-img" onerror="this.onerror=null; this.src='https://placehold.co/600x400/1c1e22/eaebee?text=Image+Not+Found';">
+                        </div>
+                    `;
+                });
+                galleryHtml += `</div>`;
+                bodyContainer.innerHTML += galleryHtml;
+            }
+
+            if (selectedNews.paragraphs && Array.isArray(selectedNews.paragraphs)) {
+                selectedNews.paragraphs.forEach(pText => {
+                    bodyContainer.innerHTML += `<p>${pText}</p>`;
+                });
+            }
+
+            const allButtons = document.querySelectorAll('.news-item-btn');
+            allButtons.forEach(btn => btn.classList.remove('active'));
+            const activeBtn = document.getElementById(`btn-${newsId}`);
+            if (activeBtn) activeBtn.classList.add('active');
+        }
+
+        function openLightbox(imgUrl) {
+            const lightbox = document.getElementById('news-lightbox');
+            const lightboxImg = document.getElementById('news-lightbox-img');
+            lightboxImg.src = imgUrl;
+            lightbox.classList.add('show');
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('news-lightbox');
+            lightbox.classList.remove('show');
+        }
+    </script>
+</body>
+
+</html>
